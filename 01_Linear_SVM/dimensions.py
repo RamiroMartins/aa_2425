@@ -14,20 +14,21 @@ X, y = make_classification(n_samples=400, n_features=5, n_redundant=0, n_repeate
                            random_state=9)
 
 # Separar les dades: train_test_split
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.33, random_state=42)
 
-# TODO
 
 # Estandaritzar les dades: StandardScaler
-
-# TODO
+scaler = StandardScaler()
+X_train = scaler.fit_transform(X_train)
+X_test = scaler.transform(X_test)
 
 # Entrenam una SVM linear (classe SVC)
+svm = SVC(C=1000.0, kernel='linear') # C és el paràmetre de regularització, kernel és el tipus de kernel
+svm.fit(X_train, y_train) # Entrenament SVM
 
-# TODO
 
 # Prediccio
-# TODO
-
+y_prediction_svm = svm.predict(X_test) # Prediccio SVM
 
 # Metrica
-# TODO
+num_correctes = np.sum(y_prediction_svm == y_test)
