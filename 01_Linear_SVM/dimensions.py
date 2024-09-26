@@ -32,3 +32,4 @@ y_prediction_svm = svm.predict(X_test) # Prediccio SVM
 
 # Metrica
 num_correctes = np.sum(y_prediction_svm == y_test)
+print(num_correctes)
